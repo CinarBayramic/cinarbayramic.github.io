@@ -2,8 +2,10 @@ const clamp = (val, min, max) => Math.min(Math.max(val, min), max)
 var b_x, b_y;
 var b_r;
 var b_vely;
-
+var radiuscontroller;
 function setup() {
+  radiuscontroller = createSlider(4, 100);
+  radiuscontroller.position(10,10)
   b_x = 200;
   b_y = 0;
   b_r = 30;
@@ -13,7 +15,7 @@ function setup() {
 }
 
 function draw() {
-  
+  b_r = radiuscontroller.value();
   background(220);
   line(0,200,400,200);
   
