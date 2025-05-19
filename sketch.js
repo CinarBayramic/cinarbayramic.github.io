@@ -5,7 +5,7 @@ var b_vely;
 var radiuscontroller;
 function setup() {
   radiuscontroller = createSlider(4, 100);
-  radiuscontroller.position(10,10)
+  radiuscontroller.position(20,430)
   b_x = 200;
   b_y = 0;
   b_r = 30;
