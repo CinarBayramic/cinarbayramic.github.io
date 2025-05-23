@@ -7,7 +7,13 @@
      <title>Main</title>
      <link rel="icon" href="Adsız.png" type="image/x-icon">
 </head>
+<script>
+</script>
 <style>
+    p {
+        padding-left: 6%;
+        padding-right: 6%;
+    }
     .button {
          background-color: #6eff75; /* Green icon color */
          text-decoration: none;
@@ -36,6 +42,7 @@
          display: flex;
          gap: 15px;
      }
+     
      .top-bar .menu button {
          background-color: #6eff75; /* Green icon color */
          text-decoration: none;
@@ -45,6 +52,39 @@
          border-color:black;
          border-radius: 3px;
      }
+.mywebsite {
+    position: relative;
+    display: inline-block;
+}
+    .mywebsite:hover {
+            color: #00FF00; /* Green icon color */
+            text-decoration: none;
+            height: 90%;
+            border-radius: 15%;
+            border-color:black;
+            border-radius: 3px;
+    }
+     .mywebsite::after {
+            content: "yeah, tooltips!!! this is so fun!!!";
+            position: absolute;
+            background-color: white;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 200px;
+            left: 0;
+            top: 120%;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s ease-in-out;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .mywebsite:hover::after {
+            opacity: 1;
+            visibility: visible;
+        }
+
  </style>
 
 
@@ -58,11 +98,16 @@
         <div class="menu">
           <button class="button" onclick="window.open('https://cnrb123.itch.io/')">itch.io</button>
           <button class="button" onclick="window.open('https://github.com/CinarBayramic/')">github</button>
-          <button class="button" onclick="window.open('mailto:cnrb1@proton.me')">contact</button>
+          <button class="button" onclick="window.open('mailto:cinarb1@proton.me')">contact</button>
         </div>
     </div>   
-    <H1>Welcome, to my website!</H1>
-    <h2>you can access the other pages from the top.</h2>
-
+    <center><H1>Welcome, to <b onmouseover="mywebsite_explained();"class="mywebsite">my website!</b></H1>    
+    <p>My name is Çınar and i develop games using p5js, opengl/sdl2 and unity. This website is to display the games that i have written/compiled for the web. you can check my itch.io page from the top right or play my web games on the <a href="./games.html">Games</a> tab. I document how i make my games and why i made them.
+    I am not a web developer, so this website might not be the best looking. i hope you enjoy.
+    
+    
+    </p></center>
+    <center><h1 >here is an <a href="./buyoancy.html"">example game</a>:</h1></center>
+    <center><iframe src="./game1.html" style="width: 430px;height:430px;border-width: 0px;"></iframe></center>
 </body>
 </html>
