@@ -21,6 +21,7 @@ function draw() {
     if(gameover == false) {
     background(220);
     renderZombies();
+    ellipse(mouseX,mouseY,16)
     handleZombieSpawn();
     fill(0, 255, 0);
     ellipse(player.x, player.y, player.radius * 2);
@@ -32,11 +33,11 @@ function draw() {
 }
 }
 function mouseClicked() {
-    let mouseX = event.clientX - canvas.offsetLeft;
-    let mouseY = event.clientY - canvas.offsetTop;
+    //let mouseX = event.clientX - canvas.offsetLeft;
+    // let mouseY = event.clientY - canvas.offsetTop;
     for(let i = 0; i < zombies.length; i++) {
         let z = zombies[i];
-        if(dist(mouseX, mouseY, z.x, z.y) < z.radius) {
+        if(dist(mouseX, mouseY, z.x, z.y)-8 < z.radius) {//-8 for accuracy 
             zombies.splice(i, 1);
             score++;
             if(score > maxscore) {
