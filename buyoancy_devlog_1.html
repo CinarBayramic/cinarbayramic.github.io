@@ -75,72 +75,15 @@
         </div>
     </div>   
     
-
-
-    <center><p style="padding:10px;">this is a simple game that "simulates" the buyoancy of a ball using Archimedes's buyoancy principle. The ball is moved with the arrow keys and you can set its radius with the slider below.</p></center>
-    <center><iframe src="./game1.html" style="width: 430px;height: 430px;border-width: 0px;"></iframe></center>
-    <!--<center><script src="sketch.js"></script></center> -->
-    <center><div><pre><code class="language-js">
-//this is the program's source code, its really simple, i have rounded the gravity to 9m/s and made a pixel 10 meters. sorry for the Turkish comments. 
-const clamp = (val, min, max) => Math.min(Math.max(val, min), max)
-var b_x, b_y;
-var b_r;
-var b_vely, b_velx;
-var radiuscontroller;
-function setup() {
-  radiuscontroller = createSlider(4, 100);
-  radiuscontroller.position(10,410)
-  radiuscontroller.value(30);
-  b_velx = 0;
-  b_x = 200;
-  b_y = 0;
-  b_r = 30;
-  b_vely = 1;
-  createCanvas(400, 400);
-  
-}
-
-function draw() {
-  handleEvents();
-  b_r = radiuscontroller.value();
-  background(220);
-  line(0,200,400,200);
-  
-  
-  fill(122,122,255)
-  rect(0,200,400,200);
-  fill(255,255,255)
-  ellipse(b_x, b_y%400, b_r*2, b_r*2);
-  
-  
-  text("x="+mouseX+"y="+mouseY,mouseX,mouseY)
-  b_y = clamp(b_y + b_vely,-5000, 400);
-  b_x = clamp(b_x + b_velx,0+b_r, 400 - b_r);
-  //batmazlık = yoğunluk * yerçekimi * derinlik(aslında alan ama olsun :])
-  if(b_y+b_r>200) {
-    b_vely-= 1*0.01*(b_y-200);
-  }
-  b_velx *= 0.99;
-  b_vely+=0.1;
-  b_vely=clamp(b_vely*0.99,-300,300)
-  //b_vely += 9.3;
-}
-function handleEvents() {
-  //handle arrows
-  if (keyIsDown(LEFT_ARROW)) {
-    b_velx -= 0.1;
-  }
-  if (keyIsDown(RIGHT_ARROW)) {
-    b_velx += 0.1;
-  }
-  if (keyIsDown(UP_ARROW)) {
-    b_vely -= 0.06;
-  }
-  if (keyIsDown(DOWN_ARROW)) {
-    b_vely += 0.06;
-  }
-}
-</code></pre></div>
-</center>
+            <p style="padding-left:10px">Recently, i made an example game that simulated the buyoancy of the water and how it affects a circular object.</p>
+            
+            <p style="padding-left:10px">Buyoancy is defined as "is the force exerted by a fluid opposing the weight of a partially or fully immersed object" in <a href="https://en.wikipedia.org/wiki/Buoyancy">wikipedia</a> and the formula of buyoancy is F= ρ V g meaning Force=density*Volume*gravity which can be represented as the code below:</p>
+            <p style="padding-left:10px">
+    		b_vely-= 1*0.01*(b_y-200); //the direction up is negative in p5js.
+            </p>
+            <p style="padding-left:10px">Subtracting the position of the ball from the height of the water gives us the depth, 1 is the density constant of our water and 0.01 is the gravity constant of our simulation. This may not accurately calculate the exact volume but it is close enough to be good.</p>
+   
+            <p style="padding-left:10px">The rest of the program had 3 functions 2 being the functions required by p5js to render the program(setup and draw) and the other function was a function i created to handle the key inputs(arrow/direction keys) to handle the movement.</p>
+            <p style="padding-left:10px">I also added 0.01 to the player's velocity to simulate the gravity and clamped the vertical velocity between the minimum value of -300 and the maximum value of 300 to prevent bugs.  </p>
 </body>
 </html>
