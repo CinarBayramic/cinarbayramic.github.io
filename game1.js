@@ -28,6 +28,10 @@ function draw() {
   fill(255,255,255)
   ellipse(b_x, b_y%400, b_r*2, b_r*2);
   
+
+  if(b_x + b_velx < 0 + b_r || b_x + b_velx > 400 - b_r) {
+    b_velx *=-1;
+  }
   
   text("x="+mouseX+"y="+mouseY,mouseX,mouseY)
   b_y = clamp(b_y + b_vely,-5000, 400);

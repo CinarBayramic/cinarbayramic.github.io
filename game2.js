@@ -97,7 +97,7 @@ function handleZombieSpawn() {
             x: player.x+ Math.cos(deg) * 399,
             y: player.y+Math.sin(deg) * 300,
             radius: zombieRadius,
-            speed: random(1, 3)
+            speed: random(1, 3 + (score/30))
         };
         zombies.push(newZombie);
         lastSpawn = frameCount;
