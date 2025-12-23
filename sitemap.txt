@@ -1,0 +1,5 @@
+gamedev-fun.pages.dev/
+gamedev-fun.pages.dev/games
+gamedev-fun.pages.dev/zombies
+gamedev-fun.pages.dev/newton
+gamedev-fun.pages.dev/buyoancy
