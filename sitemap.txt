@@ -1,5 +1,6 @@
-gamedev-fun.pages.dev/
-gamedev-fun.pages.dev/games
-gamedev-fun.pages.dev/zombies
-gamedev-fun.pages.dev/newton
-gamedev-fun.pages.dev/buyoancy
+https://gamedev-fun.pages.dev/index.html
+https://gamedev-fun.pages.dev/games.html
+https://gamedev-fun.pages.dev/zombies.html
+https://gamedev-fun.pages.dev/newton.html
+https://gamedev-fun.pages.dev/buyoancy.html
+https://gamedev-fun.pages.dev/Devlogs.html
