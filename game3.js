@@ -62,22 +62,18 @@ function newton() {
 //formerly DetectFutureCollision
 function InterpolateCollision(a,b) {//a and b are balls
   //a'nın velocitysi b'den uzun ise a ile b'nin uzaklığı kadar uzun olacak şekilde kısaltıp ucunun b'nin içinde olup olmadığına bakarak sonraki framelerde içine girip girmeyeceğini tespit edebiliriz. sonrasında topu b'nin sınırının ucunda olacak şekilde updateleyebiliriz.
+  let r = dist(objects[i].x,objects[i].y,objects[j].x,objects[j].y);
   
-}
-function handleCollisions() {
-  for(let i = 0; i < objects.length;i++) {
-    
-    for(let j = i+1; j < objects.length;j++) {
-      var r = dist(objects[i].x,objects[i].y,objects[j].x,objects[j].y);
-      if(r < objects[i].r + objects[j].r) { // collision
+  if(r < objects[i].r + objects[j].r) { // collision
         let nmldx = objects[j].x - objects[i].x;
         let nmldy = objects[j].y - objects[i].y;
         
         let nmlr = dist(objects[i].x,objects[i].y,objects[j].x,objects[j].y)
         
         let nmlx = nmldx/nmlr;
+        
         let nmly = nmldy/nmlr;
-
+        
         
         let overlap = (objects[i].r + objects[j].r) - nmlr
 
@@ -91,8 +87,12 @@ function handleCollisions() {
         //TODO:
         //add elastic collision here!!
       }
-      
-      
+}
+function handleCollisions() {
+  for(let i = 0; i < objects.length;i++) {
+    
+    for(let j = i+1; j < objects.length;j++) {
+      InterpolateCollision(objects[i],objects[j]);
     }
   }
 }
