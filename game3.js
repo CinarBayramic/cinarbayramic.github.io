@@ -60,22 +60,25 @@ function newton() {
 }
 
 //formerly DetectFutureCollision
+//I like to imagine this as a problem where you want to 
+//detect two trains' collision, their tracks have an intersection
+//but how do we know if they will collide?
 function InterpolateCollision(a,b) {//a and b are balls
   //a'nın velocitysi b'den uzun ise a ile b'nin uzaklığı kadar uzun olacak şekilde kısaltıp ucunun b'nin içinde olup olmadığına bakarak sonraki framelerde içine girip girmeyeceğini tespit edebiliriz. sonrasında topu b'nin sınırının ucunda olacak şekilde updateleyebiliriz.
-  let r = dist(objects[i].x,objects[i].y,objects[j].x,objects[j].y);
+  let r = dist(a.x,a.y,b.x,b.y);
   
-  if(r < objects[i].r + objects[j].r) { // collision
-        let nmldx = objects[j].x - objects[i].x;
-        let nmldy = objects[j].y - objects[i].y;
+  if(r < a.r + b.r) { // collision
+        let nmldx = b.x - a.x;
+        let nmldy = b.y - a.y;
         
-        let nmlr = dist(objects[i].x,objects[i].y,objects[j].x,objects[j].y)
+        let nmlr = dist(a.x,a.y,b.x,b.y)
         
         let nmlx = nmldx/nmlr;
         
         let nmly = nmldy/nmlr;
         
         
-        let overlap = (objects[i].r + objects[j].r) - nmlr
+        let overlap = (a.r + b.r) - nmlr
 
         
         objects[i].x -= nmlx * overlap / 2;
