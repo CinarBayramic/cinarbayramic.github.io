@@ -58,7 +58,9 @@ function newton() {
     }
   }
 }
-function detectFutureCollision(a,b) {//a and b are balls
+
+//formerly DetectFutureCollision
+function InterpolateCollision(a,b) {//a and b are balls
   //a'nın velocitysi b'den uzun ise a ile b'nin uzaklığı kadar uzun olacak şekilde kısaltıp ucunun b'nin içinde olup olmadığına bakarak sonraki framelerde içine girip girmeyeceğini tespit edebiliriz. sonrasında topu b'nin sınırının ucunda olacak şekilde updateleyebiliriz.
   
 }
@@ -75,24 +77,7 @@ function handleCollisions() {
         
         let nmlx = nmldx/nmlr;
         let nmly = nmldy/nmlr;
-        
-        let normalangle =  atan2(nmly,nmlx);
-        
-        let incangle1 = atan2(objects[i].vy,objects[i].vx);
-        let incangle2 = atan2(objects[j].vy,objects[j].vx);
-        
-        let ba1 = 2* normalangle - incangle1;
-        let ba2 = 2* (normalangle + PI) - incangle2;
-        
-        let m1 = sqrt(objects[i].vx * objects[i].vx + objects[i].vy * objects[i].vy)
-        let mi = objects[i].r*objects[i].r*3*dn;
-        let mj= objects[j].r * objects[j].r * 3 * dn;
-        objects[i].vx = m1 * mj *cos(ba1)
-        objects[i].vy = m1 * mj *sin(ba1)
-        
-        let m2 = sqrt(objects[j].vx * objects[j].vx + objects[j].vy * objects[j].vy)
-        objects[j].vx = m2*mi* cos(ba2)
-        objects[j].vy = m2*mi *sin(ba2)
+
         
         let overlap = (objects[i].r + objects[j].r) - nmlr
 
@@ -101,10 +86,10 @@ function handleCollisions() {
         objects[i].y -= nmly * overlap / 2;
         
         objects[j].x += nmlx * overlap / 2;
-        objects[j].y += nmly * overlap / 2;
+        objects[j].y += nmly * overlap / 2;        
 
-        
-        
+        //TODO:
+        //add elastic collision here!!
       }
       
       
