@@ -78,21 +78,21 @@ function handleCollisions() {
         
         let normalangle =  atan2(nmly,nmlx);
         
-        let incangle1 = atan2(objects[i].vely,objects[i].velx);
-        let incangle2 = atan2(objects[j].vely,objects[j].velx);
+        let incangle1 = atan2(objects[i].vy,objects[i].vx);
+        let incangle2 = atan2(objects[j].vy,objects[j].vx);
         
         let ba1 = 2* normalangle - incangle1;
         let ba2 = 2* (normalangle + PI) - incangle2;
         
-        let m1 = sqrt(objects[i].velx * objects[i].velx + objects[i].vely * objects[i].vely)
+        let m1 = sqrt(objects[i].vx * objects[i].vx + objects[i].vy * objects[i].vy)
         let mi = objects[i].r*objects[i].r*3*dn;
         let mj= objects[j].r * objects[j].r * 3 * dn;
-        objects[i].velx = m1 * mj *cos(ba1)
-        objects[i].vely = m1 * mj *sin(ba1)
+        objects[i].vx = m1 * mj *cos(ba1)
+        objects[i].vy = m1 * mj *sin(ba1)
         
-        let m2 = sqrt(objects[j].velx * objects[j].velx + objects[j].vely * objects[j].vely)
-        objects[j].velx = m2*mi* cos(ba2)
-        objects[j].vely = m2*mi *sin(ba2)
+        let m2 = sqrt(objects[j].vx * objects[j].vx + objects[j].vy * objects[j].vy)
+        objects[j].vx = m2*mi* cos(ba2)
+        objects[j].vy = m2*mi *sin(ba2)
         
         let overlap = (objects[i].r + objects[j].r) - nmlr
 
